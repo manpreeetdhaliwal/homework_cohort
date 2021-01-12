@@ -1,0 +1,62 @@
+<%- include('./partials/header') %>
+
+<%- include("./partials/navbar")%>
+<div class="form-group row p-2 bg-light border" style="margin:10px 20px 30px 40px">
+    
+  
+    <h1 class='card-title'><%= cohort.name %></h1>
+  <div><%= cohort.members %> </div>
+    
+ 
+
+  <div>
+    <p>Method</p>
+<div>
+<form action="/cohorts/<%=cohort.id%>" method=POST>
+<input type="radio" name="assignment" value="team_count">
+<label for="team_count">Team Count</label></br>
+<input type="radio" name="assignment" value="number_per_team">
+<label for="number_per_team">Number per Team</label></br>
+<label for="quantity">Quantity:</label></br>
+<input class="form-control" type="text" name="quantity" placeholder="enter number" required></br>
+<input type="submit" class="form-control btn-primary" value="Assign Teams">
+</form>
+<div>
+  <% if(teamSplit) {%>
+  <table class="table table-striped">
+    <thead>
+      <tr class="d-flex">
+        <th class="col-8">#</th>
+        <th class="col-4">Members</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="d-flex">
+        <% for(let i=0;i<teamSplit.length;i++) { %>
+          
+              <tr>
+          <td class="col-1"><%= i+1 %></td>
+          <td class="col-11"><%= teamSplit[i]%><br/></td><br/>
+        </tr>
+        
+        <%}%>
+        
+      </tr>
+    </tbody>
+  </table>
+  <%}%>
+</div>
+
+<a href="/cohorts/<%=cohort.id%>/edit"><button  class="form-control btn-warning">Edit Cohort</button></a>
+</div>
+
+<div>
+  <form action="/cohorts/<%=cohort.id%>" method=POST>
+      <input type='hidden' name='_method' value='DELETE'>
+      <input type="submit" class="form-control btn-danger" value="Delete">
+  </form>
+</div>
+</div> 
+
+<!-- </div> -->
+<%- include('./partials/footer') %> 

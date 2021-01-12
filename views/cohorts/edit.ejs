@@ -1,0 +1,41 @@
+<%- include('./partials/header') %>
+
+<%- include("./partials/navbar")%>
+<div class="form-group row p-2 bg-light border" style="margin:10px 20px 30px 40px">
+
+<form action='/cohorts/<%= cohort.id %>' method='POST' > 
+    <input type='hidden' name='_method' value='PATCH'>
+<div class='form-group'>
+   
+    <div class='form-group'>
+        <textarea
+          class='form-control'
+          name='members'
+          cols='60'
+          rows='5'
+          placeholder="What are your thoughts?"
+        >
+          <%= cohort ? cohort.members : '' %>
+        </textarea>
+  </div>
+  <div class='form-group'>
+    <input
+      type="text"
+      class='form-control'
+      name='name'
+      placeholder='enter name'
+      value='<%= cohort ? cohort.name : '' %>'
+    >
+  </div>
+  <div class='form-group'>
+    <input  type='url'  class='form-control'  name='logo_url' placeholder="enter image url?"  value="<%= cohort ? cohort.logo_url : '' %>">
+      
+    <a href="/cohorts/<%=cohort.id%>/edit"><button>Update</button></a>
+    
+  </div>  
+  </form>
+  
+</div> 
+
+<!-- </div> -->
+<%- include('./partials/footer') %> 

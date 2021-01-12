@@ -1,0 +1,16 @@
+<%- include('./partials/header') %>
+
+<%- include("./partials/navbar")%>
+
+<form action="/cohorts" method="POST">
+    <div class="form-group" style="margin:10px 20px 30px 40px">
+    <label for="logo_url">Logo Url:</label></br>
+    <input class="form-control" type="url" name="logo_url" placeholder="enter logo url"></br>
+    <label for="name">Name:</label></br>
+    <input class="form-control" type="text" name="name" placeholder="enter cohort name"></br>
+    <label for="members">Members:</label></br>
+    <textarea class="form-control" name="members" cols="30" rows="5" placeholder="e.g jon snow, diana, meera, christoff"></textarea></br>
+    <input class="btn btn-primary text-primary bg-light float-right" type="submit" value="Submit">
+</div>
+</form>
+<%- include('./partials/footer') %> 
